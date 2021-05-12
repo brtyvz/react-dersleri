@@ -1,13 +1,13 @@
 import{BrowserRouter as Router,Link}from 'react-router-dom'
-import axios from 'axios'
+import {api} from '../api'
 import React ,{useEffect,useState} from 'react'
 const YaziListesi=(props)=>{
     //app basladiginda apiyi almak icin useEffect icinde axios ile apiden gelen veriyi aldik
   const[yaziListesi,setYaziListesi]=useState([]);
   //gelen veriyi bu bos array statesi icine yollicaz
   useEffect(()=>{
-    axios
-    .get("https://react-yazi-yorum.herokuapp.com/posts")
+    api()
+    .get("/posts")
 .then((response)=>{setYaziListesi(response.data) });
 
 },[])
